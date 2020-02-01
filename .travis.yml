@@ -6,12 +6,8 @@ env:
   global:
     - ROLE_NAME: java
   matrix:
-    - MOLECULE_DISTRO: centos7
-    - MOLECULE_DISTRO: centos6
-    - MOLECULE_DISTRO: fedora27
     - MOLECULE_DISTRO: ubuntu1804
-    - MOLECULE_DISTRO: ubuntu1604
-    - MOLECULE_DISTRO: debian9
+    - MOLECULE_DISTRO: ubuntu1904
 
 install:
   # Install test dependencies.
@@ -20,8 +16,8 @@ install:
 before_script:
   # Use actual Ansible Galaxy role name for the project directory.
   - cd ../
-  - mv ansible-role-$ROLE_NAME geerlingguy.$ROLE_NAME
-  - cd geerlingguy.$ROLE_NAME
+  - mv ansible-role-$ROLE_NAME lordoftheflies.$ROLE_NAME
+  - cd lordoftheflies.$ROLE_NAME
 
 script:
   # Run tests.

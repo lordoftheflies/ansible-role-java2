@@ -1,34 +1,17 @@
 ---
-dependencies: []
 
 galaxy_info:
-  author: geerlingguy
-  description: Java for Linux
-  company: "Midwestern Mac, LLC"
-  license: "license (BSD, MIT)"
-  min_ansible_version: 2.4
+  author: lordoftheflies
+  description: "Java for Linux"
+  company: "Cherubits LLC"
+  role_name: ansible_role_java
+  license: license (Apache-2.0)
+  min_ansible_version: 2.9
+  issue_tracker_url: https://github.com/lordoftheflies/ansible-role-java/issues
   platforms:
-    - name: EL
-      versions:
-        - 6
-        - 7
-    - name: Fedora
-      versions:
-        - all
-    - name: Debian
-      versions:
-        - wheezy
-        - jessie
-        - stretch
     - name: Ubuntu
       versions:
-        - precise
-        - trusty
-        - xenial
-        - bionic
-    - name: FreeBSD
-      versions:
-        - 10.2
+        - all
   galaxy_tags:
     - development
     - system
@@ -36,4 +19,5 @@ galaxy_info:
     - java
     - jdk
     - openjdk
-    - oracle
+
+dependencies: []
