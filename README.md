@@ -53,7 +53,7 @@ For Ubuntu < 16.04:
     
     - hosts: server
       roles:
-        - role: geerlingguy.java
+        - role: lordoftheflies.role_java
           when: "ansible_os_family == 'Debian'"
           java_packages:
             - openjdk-8-jdk
