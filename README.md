@@ -30,7 +30,7 @@ None.
 
     - hosts: servers
       roles:
-        - role: lordoftheflies.java
+        - role: lordoftheflies.role_java
           become: yes
 
 ## Example Playbook (install OpenJDK 8)
@@ -39,7 +39,7 @@ For RHEL / CentOS:
 
     - hosts: server
       roles:
-        - role: geerlingguy.java
+        - role: lordoftheflies.role_java
           when: "ansible_os_family == 'RedHat'"
           java_packages:
             - java-1.8.0-openjdk
