@@ -1,6 +1,6 @@
 # Ansible Role: Java
 
-[![Build Status](https://travis-ci.org/geerlingguy/ansible-role-java.svg?branch=master)](https://travis-ci.org/geerlingguy/ansible-role-java)
+[![Build Status](https://travis-ci.org/lordoftheflies/role_java.svg?branch=master)](https://travis-ci.org/lordoftheflies/role_java)
 
 Installs Java for RedHat/CentOS and Debian/Ubuntu linux servers.
 
@@ -57,11 +57,11 @@ For Ubuntu < 16.04:
           when: "ansible_os_family == 'Debian'"
           java_packages:
             - openjdk-8-jdk
+            
+## Author
+
+* [lordoftheflies](mailto:laszlo.hegedus@cherubits.hu)
 
 ## License
 
 MIT / BSD
-
-## Author Information
-
-This role was created in 2014 by [Jeff Geerling](https://www.jeffgeerling.com/), author of [Ansible for DevOps](https://www.ansiblefordevops.com/).
