@@ -1,0 +1,4 @@
+---
+# roles/java/vars/debian.yml
+
+java_package_extension: 'rpm'

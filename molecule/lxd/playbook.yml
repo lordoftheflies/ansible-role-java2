@@ -1,0 +1,9 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    - java_deployment_users_home: /root
+    - java_testing_provider: lxd
+
+  roles:
+    - java

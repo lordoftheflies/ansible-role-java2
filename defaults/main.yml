@@ -1,0 +1,237 @@
+---
+# roles/java/defaults/main.yml
+
+java_debug: false
+
+java_controller_user: '{{ project_controller_user }}'
+java_controller_home: '{{ project_controller_home }}'
+java_controller_resources_root: '{{ project_controller_resources_home }}'
+
+java_deployment_user: '{{ project_deployment_user }}'
+java_deployment_home: '{{ project_deployment_home }}'
+java_deployment_resources_root: '{{ project_deployment_resources_home }}'
+
+## atomic versioning example
+#
+# java_major: '0'
+# java_moderate_revision: '0'
+# java_minor_revision: '1'
+# java_build: ''
+
+## Package #
+
+java_package_state: 'present'
+java_package_version: '2.0.1'
+java_package_filename: "vagrant_{{ java_package_version }}_i686.deb"
+
+java_controller_resources_dir: '{{ java_controller_resources_root }}/sw/vagrant/debs'
+java_deployment_resources_dir: '{{ java_deployment_resources_root }}/vagrant/debs'
+
+# /tests/sw/{{ ansible_distribution| lower }}/{{ ansible_distribution_version }}/miniconda'
+
+# Help file
+
+java_acemenu_help_file_template_path: '{{ fact_role_path }}/templates/bin/acemenu/help/example_aceadmin_helpfile.md.j2'
+
+# Resources
+
+java_package_url: "https://releases.hashicorp.com/vagrant/2.0.1/vagrant_2.0.1_i686.deb"
+# java_checksum_url: "https://releases.hashicorp.com/vagrant/2.0.1/ vagrant_2.0.1_SHA256SUMS"
+# java_checksum_sig_url: "https://releases.hashicorp.com/vagrant/2.0.1/ vagrant_2.0.1_SHA256SUMS.sig"
+
+## links
+
+java_default_link_force: true
+
+########################################
+
+# Resources
+
+java_resources_on_local:
+
+  java_local_directories:
+
+    state: 'directory'
+    path: '{{ java_controller_resources_dir }}'
+    owner: '{{ java_controller_user }}'
+    group: '{{ java_controller_user }}'
+    mode: '0755'
+
+  java_local_clones:
+
+    become: ''
+    repo: 'https://github.com/cjsteel/script-bash-acemenu.git'
+    dest: '{{ java_controller_resources_dir }}/acemenu'
+    mode: '0700'
+    clone: true
+
+  java_local_downloads:
+
+    url: 'https://repo.continuum.io/miniconda/Miniconda2-4.3.30-Linux-x86_64.sh'
+    dest: '{{ java_controller_resources_dir }}/Miniconda2-latest-Linux-x86_64.sh'
+    owner: '{{ java_controller_user }}'
+    group: '{{ java_controller_user }}'
+    mode: '0700'
+    checksum: 'md5:bd1655b4b313f7b2a1f2e15b7b925d03'
+    resource_type: 'url'
+
+  java_local_file_copies:
+
+    state: "copy"
+    src: './files/example_playbook.yml'
+    dest: '{{ java_controller_resources_dir }}/copy_test.yml'
+    owner: '{{ java_controller_user }}'
+    group: '{{ java_controller_user }}'
+    mode: '0700'
+
+  java_local_file_touches:
+
+    state: 'touch'
+    path: '{{ java_controller_resources_dir }}/copy_test.yml'
+    owner: '{{ java_controller_user }}'
+    group: '{{ java_controller_user }}'
+    mode: '0770'
+
+  java_local_templated_files:
+
+
+    state: 'template'
+    src: './templates/template_test.md.j2'
+    dest: '{{ java_controller_resources_dir }}/test.md'
+    owner: '{{ java_controller_user }}'
+    group: '{{ java_controller_user }}'
+    mode: '0700'
+
+  java_local_blocksinfile:
+
+    type: 'blockinfile'
+    path: '{{ java_controller_resources_dir }}/test.md'
+    owner: '{{ java_controller_user }}'
+    group: '{{ java_controller_user }}'
+    mode: '0700'
+    insertafter: "EOF"
+    block: |
+      # if running bash
+      if [ -n "$BASH_VERSION" ]; then
+          # include /opt/display/bin/display if it exists
+          if [ -f "/opt/display/bin/display" ]; then
+              PATH="/opt/display/bin:$PATH"
+
+       	. "/opt/display/bin/"
+          fi
+      fi
+    state: "present"
+
+  java_local_standard_sym_links:
+
+    state: "link"
+    src: '{{ java_controller_resources_dir }}/test.md'
+    dest: '{{ java_controller_resources_dir }}/my_local_link'
+    owner: '{{ java_controller_user }}'
+    group: '{{ java_controller_user }}'
+    mode: '0700'
+    force: '{{ java_default_link_force }}'
+
+  java_local_relative_sym_links:
+
+    link_name: 'relative_link'
+    link_target: 'test.md'
+    link_dir: '{{ java_controller_resources_dir }}'
+    state: 'relative_link'
+#    owner: '{{ java_controller_user }}'
+#    group: '{{ java_controller_user }}'
+#    mode: '0700'
+
+java_resources_on_remote:
+
+  java_remote_directories:
+
+    state: 'directory'
+    path: '{{ java_deployment_resources_dir }}'
+    owner: '{{ java_deployment_user }}'
+    group: '{{ java_deployment_user }}'
+    mode: '0755'
+
+  java_remote_clones:
+
+    become: true
+    repo: 'https://github.com/cjsteel/script-bash-acemenu.git'
+    dest: '{{ java_deployment_resources_dir }}/acemenu'
+    mode: '0700'
+    clone: true
+
+  java_remote_downloads:
+
+    url: 'https://repo.continuum.io/miniconda/Miniconda2-4.3.30-Linux-x86_64.sh'
+    dest: '{{ java_deployment_resources_dir }}/Miniconda2-latest-Linux-x86_64.sh'
+    owner: '{{ java_deployment_user }}'
+    group: '{{ java_deployment_user }}'
+    mode: '0700'
+    checksum: 'md5:bd1655b4b313f7b2a1f2e15b7b925d03'
+    resource_type: 'url'
+
+  java_remote_file_copies:
+
+    state: "copy"
+    src: './files/example_playbook.yml'
+    dest: '{{ java_deployment_resources_dir }}/copy_test.yml'
+    owner: '{{ java_deployment_user }}'
+    group: '{{ java_deployment_user }}'
+    mode: '0700'
+
+  java_remote_file_touches:
+
+    state: 'touch'
+    path: '{{ java_deployment_resources_dir }}/copy_test.yml'
+    owner: '{{ java_deployment_user }}'
+    group: '{{ java_deployment_user }}'
+    mode: '0770'
+
+  java_remote_templates_files:
+
+    state: 'template'
+    src: './templates/template_test.md.j2'
+    dest: '{{ java_deployment_resources_dir }}/test.md'
+    owner: '{{ java_deployment_user }}'
+    group: '{{ java_deployment_user }}'
+    mode: '0700'
+
+  java_remote_blocksinfile:
+
+    type: 'blockinfile'
+    path: '{{ java_deployment_resources_dir }}/test.md'
+    owner: '{{ java_deployment_user }}'
+    group: '{{ java_deployment_user }}'
+    mode: '0700'
+    insertafter: "EOF"
+    block: |
+      # if running bash
+      if [ -n "$BASH_VERSION" ]; then
+          # include /opt/display/bin/display if it exists
+          if [ -f "/opt/display/bin/display" ]; then
+              PATH="/opt/display/bin:$PATH"
+
+       	. "/opt/display/bin/"
+          fi
+      fi
+    state: "present"
+
+  java_remote_standard_sym_links:
+
+    state: 'link'
+    src: '{{ java_deployment_resources_dir }}/test.md'
+    dest: '{{ java_deployment_resources_dir }}/my_remote_link'
+    owner: '{{ java_deployment_user }}'
+    group: '{{ java_deployment_user }}'
+    mode: '0700'
+    force: '{{ java_default_link_force }}'
+
+  java_remote_relative_sym_links:
+
+    state: 'relative_link'
+    link_dir: '{{ java_deployment_resources_dir }}'
+    link_name: 'my_relative_link'
+    link_target: 'test.md'
+    owner: '{{ java_deployment_user }}'
+    group: '{{ java_deployment_user }}'
+    mode: '0700'

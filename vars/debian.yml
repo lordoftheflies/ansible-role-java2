@@ -1,0 +1,5 @@
+---
+# roles/java/vars/debian.yml
+
+# Debian specific vars
+java_package_extension: 'deb'
