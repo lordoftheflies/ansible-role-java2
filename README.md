@@ -15,6 +15,8 @@ Ansible Role for setup Java EE runtime.
 
 ![GitHub Release Date](https://img.shields.io/github/release-date/lordoftheflies/ansible-role-java)
 
+[![time tracker](https://wakatime.com/badge/github/lordoftheflies/ansible-role-java.svg)](https://wakatime.com/badge/github/lordoftheflies/ansible-role-java)
+
 ## Description
 
 Java is an Ansible Role used to setup and maintain production grade services.
