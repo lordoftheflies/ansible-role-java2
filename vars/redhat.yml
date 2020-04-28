@@ -1,4 +1,8 @@
 ---
-# roles/java/vars/debian.yml
-
-java_package_extension: 'rpm'
+# JDK version options include:
+#   - java-1.8.0-openjdk
+#   - java-11-openjdk
+#   - java-latest-openjdk
+java_packages:
+  - java-1.8-0-openjdk
+  - java-11-openjdk

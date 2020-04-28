@@ -1,2 +1,2 @@
 ---
-# roles/java/vars/main.yml
+java_home: ""

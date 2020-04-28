@@ -1,5 +1,5 @@
 ---
-# roles/java/vars/debian.yml
+java_packages:
+  - openjdk-8-jdk
+  - openjdk-11-jdk
 
-# Debian specific vars
-java_package_extension: 'deb'

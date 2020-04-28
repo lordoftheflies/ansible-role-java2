@@ -1,13 +1,19 @@
 ---
 title: 'Role for java'
-description: 'Quickstart and examples for demonstrating the role capabilities.'
+description: 'Ansible Role for setup Java EE runtime.'
 ---
 
 # Ansible Role: Java
 
+Ansible Role for setup Java EE runtime.
+
 ## Status
 
-[![Build Status](https://travis-ci.org/lordoftheflies/java.svg?branch=master)](https://travis-ci.org/lordoftheflies/ansible-role-java)
+[![Build Status](https://travis-ci.org/lordoftheflies/ansible_role_java.svg?branch=master)](https://travis-ci.org/lordoftheflies/ansible-role-java)
+
+[![Version](https://img.shields.io/github/v/tag/lordoftheflies/ansible-role-java?sort=semver)](https://github.com/lordoftheflies/ansible-role-java/releases)
+
+![GitHub Release Date](https://img.shields.io/github/release-date/lordoftheflies/ansible-role-java)
 
 ## Description
 
@@ -28,28 +34,24 @@ Java is an Ansible Role used to setup and maintain production grade services.
 
 * Ansible
 
-### For Local Testing
-
-* [Vagrant](https://www.vagrantup.com/) - (Tested using version 2.1.1)
-* Vagrant plugins:
-  * [vagrant-disksize (0.1.2)](https://github.com/<class 'jinja2.utils.Namespace'>/vagrant-disksize)
-  * [vagrant-libvirt](https://github.com/<class 'jinja2.utils.Namespace'>/vagrant-libvirt)
-  * vai (0.9.3) - For testing with multiple vms [vagrant-plugin-vai](https://github.com/<class 'jinja2.utils.Namespace'>/vagrant-plugin-vai)
-  * [vagrant-vbguest (0.15.2) - Recommended vagrant-vbguest](https://github.com/<class 'jinja2.utils.Namespace'>/vagrant-vbguest)
-* [Virtual Box](https://www.virtualbox.org/)
-  * Tested using Version 5.2.14 r123301 (Qt5.6.1)
-
 ## Variables
 
 ### defaults/main.yml
 
 * [defaults/main.yml](defaults/main.yml) contains all of the required variables.
 
-### project_name/site.yml example
-
-* [example_java.yml](files/example_site.yml) may contain an example entry.
-
 ## Testing
+
+### For Local Testing
+
+* [Vagrant](https://www.vagrantup.com/) - (Tested using version 2.1.1)
+* Vagrant plugins:
+  * [vagrant-disksize (0.1.2)](https://github.com/lordoftheflies/vagrant-disksize)
+  * [vagrant-libvirt](https://github.com/lordoftheflies/vagrant-libvirt)
+  * vai (0.9.3) - For testing with multiple vms [vagrant-plugin-vai](https://github.com/lordoftheflies/vagrant-plugin-vai)
+  * [vagrant-vbguest (0.15.2) - Recommended vagrant-vbguest](https://github.com/lordoftheflies/vagrant-vbguest)
+* [Virtual Box](https://www.virtualbox.org/)
+  * Tested using Version 5.2.14 r123301 (Qt5.6.1)
 
 ### Testing with Molecule
 
@@ -71,20 +73,13 @@ To run on a specific VM's
 vagrant up xenial
 ```
 
-### VM's tested with Vagrant and Virtualbox
-
-pass, fail, untested, unsupported
-
-
-| OS | Version | Distribution | Supported [^1](#) | Results  |
-| :--- | :---: | :---: | :---: | :---: |
-
-
 ## Authors
 
-- [<class 'jinja2.utils.Namespace'>](mailto:<class 'jinja2.utils.Namespace'>)
+* This role was created in 2014 by [Jeff Geerling](https://www.jeffgeerling.com/), author of [Ansible for DevOps](https://www.ansiblefordevops.com/).
+* Role upgraded in 2019 by [László Hegedűs](mailto:laszlo.hegedus@cherubits.hu), founder of [Cherubits LLC](https://portal.cherubits.hu)
 
-## License: [MIT](https://tldrlegal.com/license/mit-license)
+## License
 
-* java generated using [ansible_collection_skeleton](https://github.com/<class 'jinja2.utils.Namespace'>/ansible_collection_skeleton)[![Ansible Role](https://img.shields.io/ansible/role/d/)](https://galaxy.ansible.com/lordoftheflies/ansible_role_java)
-[![Ansible Role](https://img.shields.io/ansible/role/)](https://galaxy.ansible.com/lordoftheflies/ansible_role_java)
+[Apache 2.0](https://tldrlegal.com/license/apache-license-2.0-(apache-2.0))
+
+**NOTE**: Role generated using [ansible-role-skeleton](https://github.com/lordoftheflies/ansible-role-skeleton)
