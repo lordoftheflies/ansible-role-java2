@@ -4,17 +4,7 @@
   become: true
 
   vars:
-    - ansible_role_java_system_user: root
-    - ansible_role_java_system_group: adm
-    - ansible_role_java_public: true
-    - ansible_role_java_secure: true
-    - ansible_role_java_endpoint_protocol: https
-    - ansible_role_java_endpoint_host: localhost
-    - ansible_role_java_endpoint_port: 443
-    - ansible_role_java_certificate_public_path: /etc/ssl/cert
-    - ansible_role_java_certificate_private_path: /etc/ssl/private
-    - ansible_role_java_endpoint_location: /var/www/html
-    - ansible_role_java_service: apache2
+    - java_home: /usr/lib/jvm/java-8-openjdk-amd64
 
   pre_tasks:
     - name: "Update apt cache."
